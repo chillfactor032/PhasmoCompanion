@@ -40,3 +40,13 @@ Reset | reset | Reset all evidence slots
 Info | tabs | Switch between ghost info and map info tabs
 &lt; Map | mapL | Cycle maps to the left
 Map &gt; | mapR | Cycle maps to the right
+
+## Donations
+
+PhasmoCompanion is provided free and without warranty. If you feel compelled to donated here are my crypto addresses below.
+
+Coin | Address
+--- | ---
+BTC | 3C7UT1a2Do3LxFvxZt88S7gsNkRyRKXYCw
+ETH | 0xc24Fc5E6C2b3E1e1eaE62f59Fab8cFBC87b1FEfc
+LTC | MViPMqjn2kdMwbLAbYtgpgnHfzwwpbzUZQ
