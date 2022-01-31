@@ -1,0 +1,7 @@
+{
+    "version": "1.0.0.0",
+    "ico": "./resources/img/pc_icon.png",
+    "company_name": "ChillAspect",
+    "product_name": "PhasmoCompanion",
+    "description": "Help figure out the ghost on Phasmophobia!"
+}

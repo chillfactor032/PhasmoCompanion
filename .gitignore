@@ -1,3 +1,17 @@
+# Nuitka Files
+PhasmoCompanion.build/
+PhasmoCompanion.dist/
+PhasmoCompanion.onefile-build/
+PhasmoCompanion.exe
+bin/*
+
+#Backup Files
+*.bak
+
+# VS Code Project Files
+*.pyproject
+*.pyproject.user
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
