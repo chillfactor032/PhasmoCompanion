@@ -1,10 +1,9 @@
 # Python Imports
 import sys
-import socketserver
-import socket
 import datetime
 import json
-from enum import Enum
+import keyboard
+from enum import Enum, auto
 
 # PySide6 Imports
 from PySide6.QtWidgets import QApplication, QMainWindow, QStyle, QMessageBox
@@ -29,6 +28,16 @@ class LogLevel(Enum):
                 return level
         return LogLevel.INFO
 
+class KeyEvent(Enum):
+    CYCLE_EVIDENCE_1 = auto()
+    CYCLE_EVIDENCE_2 = auto()
+    CYCLE_EVIDENCE_3 = auto()
+    CYCLE_TABS = auto()
+    MAP_LEFT = auto()
+    MAP_RIGHT = auto()
+    RESET = auto()
+
+
 class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
     ui = None
     phasmo = None
@@ -36,12 +45,11 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
     possibleGhostsModel = None
     selectedMap = None
     
-    def __init__(self, settings):
+    def __init__(self):
         super(PhasmoCompanion, self).__init__()
         #Load UI Components
         self.setupUi(self)
         
-
         #Read Version File From Resources
         version_file = QFile(":version.json")
         version_file.open(QFile.ReadOnly)
@@ -54,7 +62,9 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         
         #Load Settings
         self.log_level = LogLevel.DEBUG
-        self.settings = settings
+        QSettings.setDefaultFormat(QSettings.IniFormat)
+        self.settings = QSettings()
+
 
         #Set window Icon
         pixmapi = QStyle.StandardPixmap.SP_FileDialogListView
@@ -71,13 +81,6 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         else:
             self.setWindowIcon(default_icon)
 
-        #Local Host and Port for StreamDeck Communication
-        self.host = settings.value("PhasmoCompanion/host", "127.0.0.1")
-        self.port = int(settings.value("PhasmoCompanion/port", 39211))
-        self.host_edit.setText(self.host)
-        self.port_edit.setText(str(self.port))
-        self.log(f"Setting UDP Server {self.host}:{self.port}")
-
         #Initialize the starting evidence / map
         self.selectedEvidence = [
             Evidence.NOEVIDENCE,
@@ -91,7 +94,6 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         self.ghostsListView.setModel(self.possibleGhostsModel)
         
         #Setup Button Signals
-        self.save_settings_button.clicked.connect(self.save_settings)
         self.cycleEvidenceButtonL1.clicked.connect(self.cycleEvidence)
         self.cycleEvidenceButtonL2.clicked.connect(self.cycleEvidence)
         self.cycleEvidenceButtonL3.clicked.connect(self.cycleEvidence)
@@ -102,12 +104,12 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         self.cycleMapButtonR.clicked.connect(self.cycleMap)
         self.resetEvidenceButton.clicked.connect(self.resetEvidence)
         
-        #Local UDP Server to Communicate with Stream Deck
-        self.server = UDPServer(self.host, self.port)
-        self.server.signals.get.connect(self.udpRecv)
-        self.server.signals.log.connect(self.log)
-        self.server.start()
-        
+        #Local KeyEvent Listener to Communicate with Stream Deck
+        self.key_listener = KeyListener()
+        self.key_listener.signals.key_event.connect(self.process_key_event)
+        self.key_listener.signals.log.connect(self.log)
+        self.key_listener.start()
+
         #Build Phasmo Object with Ghost Data
         self.phasmo = Phasmo(ghosts_data)
         
@@ -116,56 +118,36 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         self.updateSelectedMap()
         self.infoTabWidget.setCurrentIndex(0)
 
-        # Setup Settings Panel
-        self.port_validator = QIntValidator(10000, 65535, self)
-        self.port_edit.setValidator(self.port_validator)
-
         #Finally, Show the UI
         geometry = self.settings.value("PhasmoCompanion/geometry")
         window_state = self.settings.value("PhasmoCompanion/windowState")
-        print(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation))
         if(geometry and window_state):
             self.restoreGeometry(geometry) 
             self.restoreState(window_state)
         self.show()
     
+    def process_key_event(self, event=KeyEvent.RESET):
+        if(event == KeyEvent.CYCLE_EVIDENCE_1):
+            self.cycleSingle(0)
+        elif(event == KeyEvent.CYCLE_EVIDENCE_2):
+            self.cycleSingle(1)
+        elif(event == KeyEvent.CYCLE_EVIDENCE_3):
+            self.cycleSingle(2)
+        elif(event == KeyEvent.RESET):
+            self.resetEvidence()
+        elif(event == KeyEvent.MAP_LEFT):
+            self.cycleMapSingle(-1)
+        elif(event == KeyEvent.MAP_RIGHT):
+            self.cycleMapSingle(1)
+        elif(event == KeyEvent.CYCLE_TABS):
+            self.cycleTabs()
+
     def cycleTabs(self):
         curWidget = self.infoTabWidget.currentWidget()
         if(curWidget == self.ghostInfoTab):
             self.infoTabWidget.setCurrentWidget(self.mapInfoTab)
         if(curWidget == self.mapInfoTab):
             self.infoTabWidget.setCurrentWidget(self.ghostInfoTab)
-
-    def save_settings(self):
-        host = self.host_edit.text()
-        port = int(self.port_edit.text())
-        self.settings.setValue("PhasmoCompanion/host", host)
-        self.settings.setValue("PhasmoCompanion/port", port)
-        self.settings.sync()
-        if(host != self.host or port != self.port):
-            self.log("Server Restart Required.")
-            self.restart_server()
-            QMessageBox.information(self, "PhasmoCompanion", "Settings Saved\n\nUDP Server Restarted.")
-        else:
-            QMessageBox.information(self, "PhasmoCompanion", "Settings Saved.")
-        
-    @Slot()
-    def udpRecv(self, msg):
-        self.log(f"UDP Recv: {msg}")
-        if(msg == "e1"):
-            self.cycleSingle(0)
-        elif(msg == "e2"):
-            self.cycleSingle(1)
-        elif(msg == "e3"):
-            self.cycleSingle(2)
-        elif(msg == "mapL"):
-            self.cycleMapSingle(-1)
-        elif(msg == "mapR"):
-            self.cycleMapSingle(1)
-        elif(msg == "tabs"):
-            self.cycleTabs()
-        elif(msg == "reset"):
-            self.resetEvidence()
             
     def refresh_ghosts_table(self):
         self.possibleGhostsModel.clear()
@@ -254,23 +236,10 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         elif(sender == self.cycleMapButtonR):
             self.cycleMapSingle(1)
 
-    def restart_server(self):
-        self.host = settings.value("PhasmoCompanion/host", "127.0.0.1")
-        self.port = int(settings.value("PhasmoCompanion/port", 39211))
-        if(self.server.die()):
-            self.server = UDPServer(self.host, self.port)
-            self.server.signals.get.connect(self.udpRecv)
-            self.server.signals.log.connect(self.log)
-            self.server.start()
-
     def closeEvent(self, evt):
-        self.server.die()
+        self.key_listener.die()
         self.settings.setValue("PhasmoCompanion/geometry", self.saveGeometry())
         self.settings.setValue("PhasmoCompanion/windowState", self.saveState())
-        host = self.host_edit.text()
-        port = int(self.port_edit.text())
-        self.settings.setValue("PhasmoCompanion/host", host)
-        self.settings.setValue("PhasmoCompanion/port", port)
         self.settings.sync()
         self.log("Closing PhasmoCompanion")
 
@@ -289,65 +258,40 @@ class PhasmoCompanion(QMainWindow, Ui_PhasmoCompanion):
         self.log_edit.append(msg)
 
 
-class UDPServer(QThread):
-
-    #Class to handle HTTP Requests
-    class Handler(socketserver.DatagramRequestHandler):
-    
-        #Handle GET requests
-        def handle(self):
-            msgRecvd = str(self.rfile.readline().strip().decode("utf-8"))
-            self.server.signals.get.emit(msgRecvd)
-
-
+class KeyListener(QThread):
     # Pass along the Signals
     class Signals(QObject):
-        get = Signal(str)
+        key_event = Signal(KeyEvent)
         log = Signal(str, LogLevel)
-
 
     def __init__(self, host="127.0.0.1", port=35387):
         super().__init__()
-        self.port = port
-        self.host = host
         self.signals = self.Signals()
-        self.server = socketserver.UDPServer((self.host, self.port), self.Handler)
-        self.server.signals = self.signals
 
     def run(self):
-        self.log(f"UDP Server Running  {self.host}:{self.port}")
-        self.server.serve_forever()
+        keyboard.add_hotkey('ctrl+shift+1', lambda: self.signals.key_event.emit(KeyEvent.CYCLE_EVIDENCE_1))
+        keyboard.add_hotkey('ctrl+shift+2', lambda: self.signals.key_event.emit(KeyEvent.CYCLE_EVIDENCE_2))
+        keyboard.add_hotkey('ctrl+shift+3', lambda: self.signals.key_event.emit(KeyEvent.CYCLE_EVIDENCE_3))
+        keyboard.add_hotkey('ctrl+shift+4', lambda: self.signals.key_event.emit(KeyEvent.RESET))
+        keyboard.add_hotkey('ctrl+shift+5', lambda: self.signals.key_event.emit(KeyEvent.MAP_LEFT))
+        keyboard.add_hotkey('ctrl+shift+6', lambda: self.signals.key_event.emit(KeyEvent.MAP_RIGHT))
+        keyboard.add_hotkey('ctrl+shift+7', lambda: self.signals.key_event.emit(KeyEvent.CYCLE_TABS))
+        self.log("KeyEvent Listener Started")
 
     def die(self):
-        self.log("UDP Server Shutdown")
-        self.server.shutdown()
-        return True
+        # In case KeyListener needs a Deconstructor
+        self.log("KeyEvent Listener Stopped")
 
     def log(self, msg, level=LogLevel.INFO):
         self.signals.log.emit(msg, level)
 
 
 if __name__ == "__main__":
-    num_args = len(sys.argv)
     app = QApplication(sys.argv)
     version = "1"
     app_name = "PhasmoCompanion"
     app.setOrganizationName(app_name)
     app.setApplicationName(app_name)
     app.setApplicationVersion(version)
-    QSettings.setDefaultFormat(QSettings.IniFormat)
-    settings = QSettings()
-    if(num_args<=1):
-        window = PhasmoCompanion(settings)
-        sys.exit(app.exec())
-    else:
-        host = settings.value("PhasmoCompanion/host", "127.0.0.1")
-        port = int(settings.value("PhasmoCompanion/port", 39211))
-        msg = sys.argv[1]
-        bytesToSend = str.encode(msg)
-        serverAddressPort = (host, port)
-        print(f"Sending UDP {host}:{port} {msg}")
-        UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-        UDPClientSocket.sendto(bytesToSend, serverAddressPort)
-
-
+    window = PhasmoCompanion()
+    sys.exit(app.exec())

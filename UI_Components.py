@@ -16,15 +16,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QGroupBox, QLabel,
-    QLineEdit, QListView, QMainWindow, QPushButton,
-    QSizePolicy, QTabWidget, QTextBrowser, QTextEdit,
-    QWidget)
+    QListView, QMainWindow, QPushButton, QSizePolicy,
+    QTabWidget, QTextBrowser, QTextEdit, QWidget)
 
 class Ui_PhasmoCompanion(object):
     def setupUi(self, PhasmoCompanion):
         if not PhasmoCompanion.objectName():
             PhasmoCompanion.setObjectName(u"PhasmoCompanion")
-        PhasmoCompanion.resize(794, 552)
+        PhasmoCompanion.resize(791, 552)
         self.centralwidget = QWidget(PhasmoCompanion)
         self.centralwidget.setObjectName(u"centralwidget")
         self.groupBox = QGroupBox(self.centralwidget)
@@ -128,33 +127,17 @@ class Ui_PhasmoCompanion(object):
         self.infoTabWidget.addTab(self.mapInfoTab, "")
         self.settingsTab = QWidget()
         self.settingsTab.setObjectName(u"settingsTab")
-        self.groupBox_3 = QGroupBox(self.settingsTab)
-        self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setGeometry(QRect(10, 10, 381, 71))
-        self.host_edit = QLineEdit(self.groupBox_3)
-        self.host_edit.setObjectName(u"host_edit")
-        self.host_edit.setGeometry(QRect(50, 30, 91, 22))
-        self.label = QLabel(self.groupBox_3)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 30, 31, 21))
-        self.label_2 = QLabel(self.groupBox_3)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(160, 30, 31, 21))
-        self.port_edit = QLineEdit(self.groupBox_3)
-        self.port_edit.setObjectName(u"port_edit")
-        self.port_edit.setGeometry(QRect(200, 30, 61, 22))
-        self.save_settings_button = QPushButton(self.groupBox_3)
-        self.save_settings_button.setObjectName(u"save_settings_button")
-        self.save_settings_button.setGeometry(QRect(280, 30, 81, 24))
         self.groupBox_4 = QGroupBox(self.settingsTab)
         self.groupBox_4.setObjectName(u"groupBox_4")
-        self.groupBox_4.setGeometry(QRect(10, 90, 381, 411))
+        self.groupBox_4.setGeometry(QRect(10, 225, 381, 281))
         self.log_edit = QTextEdit(self.groupBox_4)
         self.log_edit.setObjectName(u"log_edit")
-        self.log_edit.setGeometry(QRect(10, 20, 361, 381))
+        self.log_edit.setGeometry(QRect(10, 20, 361, 251))
         font3 = QFont()
-        font3.setFamilies([u"Courier New"])
         self.log_edit.setFont(font3)
+        self.groupBox_3 = QGroupBox(self.settingsTab)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+        self.groupBox_3.setGeometry(QRect(10, 10, 381, 208))
         self.infoTabWidget.addTab(self.settingsTab, "")
         PhasmoCompanion.setCentralWidget(self.centralwidget)
 
@@ -185,13 +168,8 @@ class Ui_PhasmoCompanion(object):
         self.mapLabel.setText(QCoreApplication.translate("PhasmoCompanion", u"DOTS Projector", None))
         self.cycleMapButtonL.setText(QCoreApplication.translate("PhasmoCompanion", u"<", None))
         self.infoTabWidget.setTabText(self.infoTabWidget.indexOf(self.mapInfoTab), QCoreApplication.translate("PhasmoCompanion", u"Map Info", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("PhasmoCompanion", u"UDP Server", None))
-        self.host_edit.setText(QCoreApplication.translate("PhasmoCompanion", u"999.999.999.999", None))
-        self.label.setText(QCoreApplication.translate("PhasmoCompanion", u"Host: ", None))
-        self.label_2.setText(QCoreApplication.translate("PhasmoCompanion", u"Port:", None))
-        self.port_edit.setText(QCoreApplication.translate("PhasmoCompanion", u"650000", None))
-        self.save_settings_button.setText(QCoreApplication.translate("PhasmoCompanion", u"Save", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("PhasmoCompanion", u"Log", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("PhasmoCompanion", u"HotKey Editor", None))
         self.infoTabWidget.setTabText(self.infoTabWidget.indexOf(self.settingsTab), QCoreApplication.translate("PhasmoCompanion", u"Settings", None))
     # retranslateUi
 
