@@ -112,15 +112,8 @@ if(partial):
 print("Compiling Binary")
 
 if(target_env == "windows"):
-    show_cmd = "--windows-disable-console "
-    if(TEST_BUILD):
-        show_cmd = ""
-        
-    cmd = f"py -m nuitka --onefile --standalone " \
-            f"--enable-plugin=pyside6 --windows-icon-from-ico={version['ico']} " \
-            f"{show_cmd}" \
-            f" -o bin/{OUTPUT_FILE} " \
-            "PhasmoCompanion.py"
+    cmd = f"pyinstaller --onefile --windowed --name=PhasmoCompanion --icon={version['ico']} PhasmoCompanion.py"
+    print(cmd)
     
 proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 for c in iter(lambda: proc.stdout.read(1), b''):
