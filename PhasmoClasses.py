@@ -1,3 +1,5 @@
+import win32gui
+import re
 from enum import Enum
 
 class Map(Enum):
@@ -206,7 +208,8 @@ ghosts_data = [
         "data": {
             "strength": "None.",
             "weakness": "Smudge sticks are more effective, preventing a hunt"
-                        " for longer. "
+                        " for longer. ",
+            "notes": ""
         }
     },
     {
@@ -218,7 +221,8 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Does not leave UV footprints after stepping in salt.",
-            "weakness": "Will become more active if it steps in salt. "
+            "weakness": "Will become more active if it steps in salt. ",
+            "notes": ""
         }
     },
     {
@@ -232,7 +236,8 @@ ghosts_data = [
             "strength": "Looking at a Phantom will lower the player's"
                         " sanity considerably.",
             "weakness": "Taking a photo of the Phantom will cause it to"
-                        " briefly disappear. "
+                        " briefly disappear. ",
+            "notes": ""
         }
     },
     {
@@ -244,7 +249,8 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Capable of throwing multiple objects at once.",
-            "weakness": "Becomes powerless with no throwables nearby."
+            "weakness": "Becomes powerless with no throwables nearby.",
+            "notes": ""
         }
     },
     {
@@ -257,7 +263,8 @@ ghosts_data = [
         "data": {
             "strength": "Will target only one player at a time.",
             "weakness": "Crucifix effectiveness is increased to 5m against"
-                        " one."
+                        " one.",
+            "notes": ""
         }
     },
     {
@@ -269,7 +276,8 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Travels at faster speeds if its victim is far away. ",
-            "weakness": "Cannot use its ability if the site's fuse box is off."
+            "weakness": "Cannot use its ability if the site's fuse box is off.",
+            "notes": ""
         }
     },
     {
@@ -282,7 +290,8 @@ ghosts_data = [
         "data": {
             "strength": "Has an increased chance to attack in the dark. ",
             "weakness": "Turning the lights on will reduce the chance of an"
-                        " attack. "
+                        " attack. ",
+            "notes": ""
         }
     },
     {
@@ -295,7 +304,8 @@ ghosts_data = [
         "data": {
             "strength": "Can travel significantly faster if a player is"
                         " spotted during a hunt.",
-            "weakness": "Moves very slowly when not chasing a player. "
+            "weakness": "Moves very slowly when not chasing a player. ",
+            "notes": ""
         }
     },
     {
@@ -308,7 +318,8 @@ ghosts_data = [
         "data": {
             "strength": "Being shy makes it more difficult to locate and"
                         " obtain evidence.",
-            "weakness": "Less likely to hunt if multiple people are nearby. "
+            "weakness": "Less likely to hunt if multiple people are nearby. ",
+            "notes": ""
         }
     },
     {
@@ -320,7 +331,8 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Can initiate hunts more often. ",
-            "weakness": "Using cursed possessions will lower sanity less. "
+            "weakness": "Using cursed possessions will lower sanity less. ",
+            "notes": ""
         }
     },
     {
@@ -333,7 +345,8 @@ ghosts_data = [
         "data": {
             "strength": "Has a stronger effect on sanity. ",
             "weakness": "Smudging the Yurei's ghost room will reduce how often"
-                        " it wanders."
+                        " it wanders.",
+            "notes": ""
         }
     },
     {
@@ -346,7 +359,8 @@ ghosts_data = [
         "data": {
             "strength": "Increased activity and ghost events. ",
             "weakness": "An Oni's increased activity makes them"
-                        "easier to find."
+                        "easier to find.",
+            "notes": ""
         }
     },
     {
@@ -358,7 +372,8 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Lower temperatures allow the Hantu to move faster. ",
-            "weakness": "Warmer areas slow the Hantu's movement. "
+            "weakness": "Warmer areas slow the Hantu's movement. ",
+            "notes": ""
         }
     },
     {
@@ -371,7 +386,8 @@ ghosts_data = [
         "data": {
             "strength": "Talking near the Yokai will anger it, increasing the"
                         " chance to attack. ",
-            "weakness": "Can only hear voices close to it during a hunt. "
+            "weakness": "Can only hear voices close to it during a hunt. ",
+            "notes": ""
         }
     },
     {
@@ -384,7 +400,8 @@ ghosts_data = [
         "data": {
             "strength": "Can only be seen interacting with D.O.T.S. through"
                         " a camera when nobody is nearby.",
-            "weakness": "Tends to wander away less from its ghost room. "
+            "weakness": "Tends to wander away less from its ghost room. ",
+            "notes": ""
         }
     },
     {
@@ -396,7 +413,8 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Has quieter footsteps during a hunt.",
-            "weakness": "Produces paranormal sounds more frequently."
+            "weakness": "Produces paranormal sounds more frequently.",
+            "notes": ""
         }
     },
     {
@@ -409,7 +427,8 @@ ghosts_data = [
         "data": {
             "strength": "A flame extinguishing can cause an Onryo to attack.",
             "weakness": "The presence of flames reduces the Onryo's ability"
-                        " to attack."
+                        " to attack.",
+            "notes": ""
         }
     },
     {
@@ -423,7 +442,8 @@ ghosts_data = [
             "strength": "Either Twin may start a hunt, though not at the same"
                         " time.",
             "weakness": "Will often interact with the environment at the same"
-                        " time."
+                        " time.",
+            "notes": ""
         }
     },
     {
@@ -436,7 +456,8 @@ ghosts_data = [
         "data": {
             "strength": "Moves faster near electrical devices. ",
             "weakness": "Disrupts electronic equipment from further away when"
-                        " it hunts."
+                        " it hunts.",
+            "notes": ""
         }
     },
     {
@@ -449,7 +470,8 @@ ghosts_data = [
         "data": {
             "strength": "May leave fingerprints that disappear quicker. ",
             "weakness": "Has a small chance of leaving six-fingered"
-                        " handprints."
+                        " handprints.",
+            "notes": ""
         }
     },
     {
@@ -462,7 +484,47 @@ ghosts_data = [
         ],
         "data": {
             "strength": "Can mimic the abilities and traits of other ghosts.",
-            "weakness": "Will present Ghost Orbs as a secondary evidence."
+            "weakness": "Will present Ghost Orbs as a secondary evidence.",
+            "notes": ""
+        }
+    },
+    {
+        "name": "Moroi",
+        "evidence": [
+            Evidence.SPIRITBOX,
+            Evidence.GHOSTWRITING,
+            Evidence.FREEZINGTEMPS
+        ],
+        "data": {
+            "strength": "Weaker the victim the stronger it becomes.",
+            "weakness": "Suffer from hyperosmia, weakening them for longer periods.",
+            "notes": ""
+        }
+    },
+    {
+        "name": "Deogen",
+        "evidence": [
+            Evidence.SPIRITBOX,
+            Evidence.GHOSTWRITING,
+            Evidence.DOTS
+        ],
+        "data": {
+            "strength": "Senses the living, run but cant hide",
+            "weakness": "Require alot of energy to form, making them slow",
+            "notes": ""
+        }
+    },
+    {
+        "name": "Thaye",
+        "evidence": [
+            Evidence.GHOSTORB,
+            Evidence.GHOSTWRITING,
+            Evidence.DOTS
+        ],
+        "data": {
+            "strength": "Upon entering the location, it will become active, defensive, and agile",
+            "weakness": "Weaken over time, making them weaker slower and less agressive.",
+            "notes": ""
         }
     }
 ]
@@ -489,7 +551,6 @@ table_html = """
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
   color: white;
 }
 </style></head>
@@ -506,7 +567,6 @@ TABLECONTENTS
 </html>
 """
 
-
 class Ghost():
     name = ""
     evidence = []
@@ -518,6 +578,7 @@ class Ghost():
         self.evidence = evidence
         self.strength = data["strength"]
         self.weakness = data["weakness"]
+        self.notes = data["notes"]
 
     def __str__(self):
         return self.name
@@ -613,3 +674,26 @@ class Phasmo():
             return self.mimic.get_remaining_evidence(temp_evidence)
         else:
             return []
+
+
+class Windows:
+
+    def __init__ (self):
+        self._handle = None
+
+    def found(self):
+        return self._handle is not None
+        
+    def find_window(self, class_name, window_name=None):
+        self._handle = win32gui.FindWindow(class_name, window_name)
+
+    def _window_enum_callback(self, hwnd, wildcard):
+        if re.match(wildcard, str(win32gui.GetWindowText(hwnd))) is not None:
+            self._handle = hwnd
+
+    def find_window_wildcard(self, wildcard):
+        self._handle = None
+        win32gui.EnumWindows(self._window_enum_callback, wildcard)
+
+    def set_foreground(self):
+        win32gui.SetForegroundWindow(self._handle)

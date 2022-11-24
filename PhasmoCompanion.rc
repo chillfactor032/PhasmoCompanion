@@ -1,7 +1,9 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
+    <file>resources/files/game_info.json</file>
     <file>resources/img/pc_icon.png</file>
     <file>resources/img/pc_icon.ico</file>
+    <file>resources/ui/themes/dark_cyan.xml</file>
     <file>version.json</file>
 </qresource>
 </RCC>

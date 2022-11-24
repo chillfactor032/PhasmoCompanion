@@ -1,0 +1,172 @@
+{
+    "version": "2022-02-12 04:12:55.029259",
+    "ghost_info": [
+        {
+            "name": "Spirit",
+            "data": "None Smudge sticks are more effective, preventing a hunt for longer.",
+            "additional_info": ""
+        },
+        {
+            "name": "Wraith",
+            "data": "Does not leave UV footprints after stepping in salt. Will become more active if it steps in salt.",
+            "additional_info": ""
+        },
+        {
+            "name": "Phantom",
+            "data": "Looking at a Phantom will lower the player's sanity considerably. Taking a photo of the Phantom will cause it to briefly disappear.",
+            "additional_info": ""
+        },
+        {
+            "name": "Poltergeist",
+            "data": "Capable of throwing multiple objects at once. Becomes powerless with no throwables nearby.",
+            "additional_info": ""
+        },
+        {
+            "name": "Banshee",
+            "data": "Will target only one player at a time. Crucifix effectiveness is increased to 5m against one.",
+            "additional_info": ""
+        },
+        {
+            "name": "Jinn",
+            "data": "Travels at faster speeds if its victim is far away. Cannot use its ability if the site's fuse box is off.",
+            "additional_info": ""
+        },
+        {
+            "name": "Mare",
+            "data": "Has an increased chance to attack in the dark. Turning the lights on will reduce the chance of an attack.",
+            "additional_info": ""
+        },
+        {
+            "name": "Revenant",
+            "data": "Can travel significantly faster if a player is spotted during a hunt. Moves very slowly when not chasing a player.",
+            "additional_info": ""
+        },
+        {
+            "name": "Shade",
+            "data": "Being shy makes it more difficult to locate and obtain evidence. Less likely to hunt if multiple people are nearby. ",
+            "additional_info": ""
+        },
+        {
+            "name": "Demon",
+            "data": "Can initiate hunts more often. Using cursed possessions will lower sanity less.",
+            "additional_info": ""
+        },
+        {
+            "name": "Yurei",
+            "data": "Has a stronger effect on sanity. Smudging the Yurei's ghost room will reduce how often it wanders.",
+            "additional_info": ""
+        },
+        {
+            "name": "Oni",
+            "data": "Increased activity and ghost events. An Oni's increased activity makes themeasier to find.",
+            "additional_info": ""
+        },
+        {
+            "name": "Hantu",
+            "data": "Lower temperatures allow the Hantu to move faster.  Warmer areas slow the Hantu's movement.",
+            "additional_info": ""
+        },
+        {
+            "name": "Yokai",
+            "data": "Talking near the Yokai will anger it, increasing the chance to attack. Can only hear voices close to it during a hunt.",
+            "additional_info": ""
+        },
+        {
+            "name": "Goryo",
+            "data": "Can only be seen interacting with D.O.T.S. through a camera when nobody is nearby. Tends to wander away less from its ghost room.",
+            "additional_info": ""
+        },
+        {
+            "name": "Myling",
+            "data": "Has quieter footsteps during a hunt. Produces paranormal sounds more frequently.",
+            "additional_info": ""
+        },
+        {
+            "name": "Onryo",
+            "data": "A flame extinguishing can cause an Onryo to attack. The presence of flames reduces the Onryo's ability to attack.",
+            "additional_info": ""
+        },
+        {
+            "name": "The Twins",
+            "data": "Either Twin may start a hunt, though not at the same time. Will often interact with the environment at the same time.",
+            "additional_info": ""
+        },
+        {
+            "name": "Raiju",
+            "data": "Moves faster near electrical devices. Disrupts electronic equipment from further away when it hunts.",
+            "additional_info": ""
+        },
+        {
+            "name": "Obake",
+            "data": "May leave fingerprints that disappear quicker. Has a small chance of leaving six-fingered handprints.",
+            "additional_info": ""
+        },
+        {
+            "name": "The Mimic",
+            "data": "Can mimic the abilities and traits of other ghosts. Will present Ghost Orbs as a secondary evidence.",
+            "additional_info": ""
+        }
+    ],
+    "map_info": [
+        {
+            "name": "Tanglewood Street House",
+            "key": "TANGLEWOOD",
+            "data": "<b>Haunted Mirror:</b><br>The Haunted Mirror spawns on the wall next to the Master Bedroom door in the Living Room.<p><b>Music Box:</b><br>  The Music Box spawns on the shelf in the Nursery.<p><b>Ouija Board:</b><br>The Ouija Board spawns on the coffee table at the far end of the Basement.<p><b>Summoning Circle:</b><br>The Summoning Circle spawns near the stairs of the Basement.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn on the end table by the window in the Living Room.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns on the trash can in the Garage.",
+            "additional_info": ""
+        },
+        {
+            "name": "Bleasdale Farmhouse",
+            "key": "BLEASDALE",
+            "data": "<b>Ouija Board:</b><br>The Ouija Board spawns on the workbench in the Garage.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns on the couch in the Upstairs Hallway.<p><b>Haunted Mirror:</b><br>The Haunted Mirror spawns on the wall in the Office.<p><b>Summoning Circle:</b><br>The Summoning Circle spawns in the Attic.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn on the table in the Office.<p><b>Music Box:</b><br>The Music Box spawns on the table with a lamp in the Living Room.",
+            "additional_info": ""
+        },
+        {
+            "name": "Grafton",
+            "key": "GRAFTON",
+            "data": "<b>Summoning Circle:</b><br>The Summoning Circle spawns in the Storage.<p><b>Ouija Board:</b><br>The Ouija Board spawns in the Master Bedroom's closet.<p><b>Music Box:</b><br>The Music Box spawns in the Foyer on one of the shelves.<p><b>Haunted Mirror:</b><br>The Haunted Mirror spawns in the Living Room next to the Kitchen door.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn in the Dining Room on the dining table.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns in the Nursery on the chest.",
+            "additional_info": ""
+        },
+        {
+            "name": "Ridgeview Road House",
+            "key": "RIDGEVIEW",
+            "data": "<b>Haunted Mirror:</b><br>The Haunted Mirror spawns above the lamp near the stairs in the Hallway.<p><b>Music Box:</b><br>The Music Box spawns on the table in Girls Bedroom.<p><b>Ouija Board:</b><br>The Ouija Board spawns on the shelf in the Utility.<p><b>Summoning Circle:</b><br>The Summoning Circle spawns in front of the stairs in the Basement.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn on the table next to the entrance in the Foyer.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns on the bench in the Hallway.",
+            "additional_info": ""
+        },
+        {
+            "name": "Edgefield Street House",
+            "key": "EDGEFIELD",
+            "data": "<b>Haunted Mirror:</b><br>The Haunted Mirror spawns in front of the stairs leading up to the second floor in the Hallway.<p><b>Music Box:</b><br>The Music Box spawns on the table with a lamp in the Living Room.<p><b>Ouija Board:</b><br>The Ouija Board spawns under a metal rack in the Utility.<p><b>Summoning Circle:</b><br>The Summoning Circle spawns in the segemented room of the Basement.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn on the table at the front of the Foyer.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns on the bed in the Large Blue Bedroom.",
+            "additional_info": ""
+        },
+        {
+            "name": "Willow Street House",
+            "key": "WILLOW",
+            "data": "<b>Ouija Board:</b><br>The Ouija Board spawns on top of the washing machines in the Garage.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn on the end table next to the couch in the Living Room.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns in the cabinet in the Boys Bedroom.<p><b>Music Box:</b><br>The Music Box spawns on the table beside the entrance in the Living Room.<p><b>Summoning Circle:</b><br>The Summoning Circle spawns in the Basement Hallway.<p><b>Haunted Mirror:</b><br>The Haunted Mirror spawns in the corner beside the metal rack in the Garage.",
+            "additional_info": ""
+        },
+        {
+            "name": "Brownstone High School",
+            "key": "BROWNSTONE",
+            "data": "All cursed possessions spawn in the Lobby or in the immediate vicinity in the hallway.",
+            "additional_info": ""
+        },
+        {
+            "name": "Maple Lodge Campsite",
+            "key": "MAPLELODGE",
+            "data": "<b>Ouija Board:</b><br>The Ouija Board spawns on the shelf in the Cleaning Closet.<p><b>Haunted Mirror:</b><br>The Haunted Mirror spawns in the Blue Tent.<p><b>Music Box:</b><br>The Music Box spawns outside the cabin on a metal table at the porch.<p><b>Voodoo Doll:</b><br>The Voodoo Doll spawns at the Campfire beside a wine bottle.<p><b>Tarot Cards:</b><br>The Tarot Cards spawn to the left side of the White Tent on a table.<p><b>Summoning Circle:</b><br>The Summoning Circle spawns in the Cabin Kitchen.",
+            "additional_info": ""
+        },
+        {
+            "name": "Prison",
+            "key": "PRISON",
+            "data": "All cursed possessions will spawn in the entrance hallway.",
+            "additional_info": ""
+        },
+        {
+            "name": "Asylum",
+            "key": "ASYLUM",
+            "data": "All cursed possessions will spawn in the Reception.",
+            "additional_info": ""
+        }
+    ]
+}
