@@ -4,4 +4,4 @@ imageio
 keyboard
 qt-material
 psutil
-Nuitka
+pyinstaller
