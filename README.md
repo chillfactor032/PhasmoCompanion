@@ -25,13 +25,13 @@ pyinstaller --onefile --windowed --name=PhasmoCompanion --icon=./resources/img/p
 
 ## Setting up StreamDeck
 
-PhasmoCompanion uses hot keys to communicate with StreamDeck. You can setup a StreamDeck profile to make setting evidence easy usiung the built in System > Hoy Keys plugin. Here is how my StreamDeck profile looks...
+PhasmoCompanion uses hot keys to communicate with StreamDeck. You can setup a StreamDeck profile to make setting evidence easy using the built in System > Hoy Keys plugin. Here is how my StreamDeck profile looks:
 
-![alt text](https://chillaspect.com/images/phasmocompanion/sd.png "StreamDeck")
+![alt text](https://chillaspect.com/images/phasmocompanion/sd.png "StreamDeck Profile for PhasmoCompanion")
 
-There are 4 main actions that can interact with PhasmoCompanion. For each action, drag the System > Hotkey action to the desired location. Set the title to the action name. Set the hotkey of the action using the table below. You can also add a launcher button to launch PhasmoCompanion. To do this, add a System > Open action and set the App/File to the PhasmoCompanion.exe. Also optionally set the appearence of the actions (e.g. use the PhasmoCompanion logo for the launcher, add a border to the other actions, set the text position and font, etc...)
+There are 4 main actions that can interact with PhasmoCompanion. For each action, drag the System > Hotkey action to the desired location. Set the title to the action name. Set the hotkey of the action using the table below. You can also add a launcher button to launch PhasmoCompanion. To do this, add a System > Open action and set the App/File to the PhasmoCompanion.exe. Optionally set the appearence of the actions (e.g. use the PhasmoCompanion logo for the launcher, add a border to the other actions, set the text position and font, etc...)
 
-![alt text](https://chillaspect.com/images/phasmocompanion/sd2.png "StreamDeck")
+![alt text](https://chillaspect.com/images/phasmocompanion/sd2.png "StreamDeck Action Setup")
 
 Action | HotKey | Description
 --- | --- | ---
