@@ -1,4 +1,3 @@
-import win32gui
 import re
 from enum import Enum
 
@@ -54,15 +53,15 @@ class Evidence(Enum):
         elif(self == Evidence.SPIRITBOX):
             return "Spirit Box"
         elif(self == Evidence.FINGERPRINTS):
-            return "Fingerprints"
+            return "Ultraviolet"
         elif(self == Evidence.GHOSTORB):
-            return "Ghost Orb"
+            return "Orb"
         elif(self == Evidence.GHOSTWRITING):
-            return "Ghost Writing"
+            return "Writing"
         elif(self == Evidence.FREEZINGTEMPS):
-            return "Freezing Temps"
+            return "Freezing"
         elif(self == Evidence.DOTS):
-            return "DOTS Projector"
+            return "DOTS"
         return "No Evidence"
 
 map_data = {
@@ -205,6 +204,7 @@ ghosts_data = [
             Evidence.SPIRITBOX,
             Evidence.GHOSTWRITING
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "None.",
             "weakness": "Smudge sticks are more effective, preventing a hunt"
@@ -219,6 +219,7 @@ ghosts_data = [
             Evidence.SPIRITBOX,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Does not leave UV footprints after stepping in salt.",
             "weakness": "Will become more active if it steps in salt. ",
@@ -232,6 +233,7 @@ ghosts_data = [
             Evidence.FINGERPRINTS,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Looking at a Phantom will lower the player's"
                         " sanity considerably.",
@@ -247,6 +249,7 @@ ghosts_data = [
             Evidence.FINGERPRINTS,
             Evidence.GHOSTWRITING
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Capable of throwing multiple objects at once.",
             "weakness": "Becomes powerless with no throwables nearby.",
@@ -260,6 +263,7 @@ ghosts_data = [
             Evidence.GHOSTORB,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Will target only one player at a time.",
             "weakness": "Crucifix effectiveness is increased to 5m against"
@@ -274,6 +278,7 @@ ghosts_data = [
             Evidence.FINGERPRINTS,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Travels at faster speeds if its victim is far away. ",
             "weakness": "Cannot use its ability if the site's fuse box is off.",
@@ -287,6 +292,7 @@ ghosts_data = [
             Evidence.GHOSTORB,
             Evidence.GHOSTWRITING
         ],
+        "hunt_threshold": "60",
         "data": {
             "strength": "Has an increased chance to attack in the dark. ",
             "weakness": "Turning the lights on will reduce the chance of an"
@@ -301,6 +307,7 @@ ghosts_data = [
             Evidence.GHOSTWRITING,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Can travel significantly faster if a player is"
                         " spotted during a hunt.",
@@ -315,6 +322,7 @@ ghosts_data = [
             Evidence.GHOSTWRITING,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "35",
         "data": {
             "strength": "Being shy makes it more difficult to locate and"
                         " obtain evidence.",
@@ -329,6 +337,7 @@ ghosts_data = [
             Evidence.GHOSTWRITING,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "70",
         "data": {
             "strength": "Can initiate hunts more often. ",
             "weakness": "Using cursed possessions will lower sanity less. ",
@@ -342,6 +351,7 @@ ghosts_data = [
             Evidence.FREEZINGTEMPS,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Has a stronger effect on sanity. ",
             "weakness": "Smudging the Yurei's ghost room will reduce how often"
@@ -356,6 +366,7 @@ ghosts_data = [
             Evidence.FREEZINGTEMPS,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Increased activity and ghost events. ",
             "weakness": "An Oni's increased activity makes them"
@@ -370,6 +381,7 @@ ghosts_data = [
             Evidence.GHOSTORB,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Lower temperatures allow the Hantu to move faster. ",
             "weakness": "Warmer areas slow the Hantu's movement. ",
@@ -383,6 +395,7 @@ ghosts_data = [
             Evidence.GHOSTORB,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Talking near the Yokai will anger it, increasing the"
                         " chance to attack. ",
@@ -397,6 +410,7 @@ ghosts_data = [
             Evidence.FINGERPRINTS,
             Evidence.DOTS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Can only be seen interacting with D.O.T.S. through"
                         " a camera when nobody is nearby.",
@@ -411,6 +425,7 @@ ghosts_data = [
             Evidence.FINGERPRINTS,
             Evidence.GHOSTWRITING
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Has quieter footsteps during a hunt.",
             "weakness": "Produces paranormal sounds more frequently.",
@@ -424,6 +439,7 @@ ghosts_data = [
             Evidence.GHOSTORB,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "60",
         "data": {
             "strength": "A flame extinguishing can cause an Onryo to attack.",
             "weakness": "The presence of flames reduces the Onryo's ability"
@@ -438,6 +454,7 @@ ghosts_data = [
             Evidence.SPIRITBOX,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Either Twin may start a hunt, though not at the same"
                         " time.",
@@ -453,6 +470,7 @@ ghosts_data = [
             Evidence.GHOSTORB,
             Evidence.DOTS
         ],
+        "hunt_threshold": "65",
         "data": {
             "strength": "Moves faster near electrical devices. ",
             "weakness": "Disrupts electronic equipment from further away when"
@@ -467,6 +485,7 @@ ghosts_data = [
             Evidence.FINGERPRINTS,
             Evidence.GHOSTORB
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "May leave fingerprints that disappear quicker. ",
             "weakness": "Has a small chance of leaving six-fingered"
@@ -482,6 +501,7 @@ ghosts_data = [
             Evidence.FREEZINGTEMPS,
             Evidence.GHOSTORB
         ],
+        "hunt_threshold": "?",
         "data": {
             "strength": "Can mimic the abilities and traits of other ghosts.",
             "weakness": "Will present Ghost Orbs as a secondary evidence.",
@@ -495,6 +515,7 @@ ghosts_data = [
             Evidence.GHOSTWRITING,
             Evidence.FREEZINGTEMPS
         ],
+        "hunt_threshold": "50",
         "data": {
             "strength": "Weaker the victim the stronger it becomes.",
             "weakness": "Suffer from hyperosmia, weakening them for longer periods.",
@@ -508,6 +529,7 @@ ghosts_data = [
             Evidence.GHOSTWRITING,
             Evidence.DOTS
         ],
+        "hunt_threshold": "40",
         "data": {
             "strength": "Senses the living, run but cant hide",
             "weakness": "Require alot of energy to form, making them slow",
@@ -521,6 +543,7 @@ ghosts_data = [
             Evidence.GHOSTWRITING,
             Evidence.DOTS
         ],
+        "hunt_threshold": "?",
         "data": {
             "strength": "Upon entering the location, it will become active, defensive, and agile",
             "weakness": "Weaken over time, making them weaker slower and less agressive.",
@@ -674,26 +697,3 @@ class Phasmo():
             return self.mimic.get_remaining_evidence(temp_evidence)
         else:
             return []
-
-
-class Windows:
-
-    def __init__ (self):
-        self._handle = None
-
-    def found(self):
-        return self._handle is not None
-        
-    def find_window(self, class_name, window_name=None):
-        self._handle = win32gui.FindWindow(class_name, window_name)
-
-    def _window_enum_callback(self, hwnd, wildcard):
-        if re.match(wildcard, str(win32gui.GetWindowText(hwnd))) is not None:
-            self._handle = hwnd
-
-    def find_window_wildcard(self, wildcard):
-        self._handle = None
-        win32gui.EnumWindows(self._window_enum_callback, wildcard)
-
-    def set_foreground(self):
-        win32gui.SetForegroundWindow(self._handle)

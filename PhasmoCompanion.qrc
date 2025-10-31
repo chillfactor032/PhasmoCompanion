@@ -1,0 +1,22 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>version.json</file>
+    <file>resources/files/ghost_data.json</file>
+    <file>resources/img/pc_icon.png</file>
+    <file>resources/img/pc_icon.ico</file>
+    <file>resources/img/icon/arrow-left.svg</file>
+    <file>resources/img/icon/arrow-right.svg</file>
+    <file>resources/img/icon/play.svg</file>
+    <file>resources/img/icon/pause.svg</file>
+    <file>resources/img/icon/refresh-cw.svg</file>
+    <file>resources/img/icon/settings.svg</file>
+    <file>resources/img/icon/save.svg</file>
+    <file>resources/img/icon/help-circle.svg</file>
+    <file>resources/img/icon/folder.svg</file>
+    <file>resources/img/icon/loading.gif</file>
+    <file>resources/img/icon/check.gif</file>
+    <file>resources/img/icon/x.gif</file>
+    <file>resources/img/icon/file-text.svg</file>
+    <file>resources/img/icon/plus.svg</file>
+</qresource>
+</RCC>

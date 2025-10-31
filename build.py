@@ -4,14 +4,13 @@ import shutil
 import sys
 import json
 
-TEST_BUILD = False
 OUTPUT_FILE = "PhasmoCompanion.exe"
 
 # Specify Paths and Files
 cwd = os.getcwd()
 ui_path = os.path.join(cwd, "resources", "ui")
 destination_file = os.path.join(cwd, "UI_Components.py")
-resource_file = os.path.join(cwd, "PhasmoCompanion.rc")
+resource_file = os.path.join(cwd, "PhasmoCompanion.qrc")
 
 target_env = "windows"
 partial = False
@@ -43,7 +42,7 @@ def getFilesWithExtension(dir_path,  extension):
 # and place it in destination_path
 def compileUiFile(ui_file, destination_file):
     # uic -g python $ui_file >> destination_file
-    ret = subprocess.run(["uic", "-g", "python", ui_file], capture_output=True)
+    ret = subprocess.run(["pyside6-uic", "-g", "python", ui_file], capture_output=True)
     if(ret.returncode != 0):
         print(f"\nError Compiling {ui_file}")
         print(ret.stderr)
@@ -58,7 +57,7 @@ def compileUiFile(ui_file, destination_file):
 # and place it in destination_path
 def compileResources(resources_file, destination_file):
     #rcc -g python -o Resources.py LightPlanStudio.rc
-    ret = subprocess.run(["rcc", "-g", "python", "-o", destination_file, resources_file], capture_output=True)
+    ret = subprocess.run(["pyside6-rcc", "-g", "python", "-o", destination_file, resources_file], capture_output=True)
     stderr = ret.stderr.decode("utf-8")
     if(ret.returncode != 0):
         print(stderr)
@@ -96,7 +95,7 @@ print("\nUI Files Compiled")
 print("=============================================\n")
 print("Compiling Resources")
 
-resource_dest = "Resources.py"
+resource_dest = "PhasmoCompanion_rc.py"
 if(compileResources(resource_file, resource_dest)):
     print(f"Compiling Resources File: {resource_file} to {resource_dest}")
 else:
@@ -112,7 +111,8 @@ if(partial):
 print("Compiling Binary")
 
 if(target_env == "windows"):
-    cmd = f"pyinstaller --onefile --windowed --name=PhasmoCompanion --icon={version['ico']} PhasmoCompanion.py"
+    #pyinstaller --onefile --windowed --name=PhasmoCompanion --icon=./resources/img/pc_icon.png --hidden-import engineio.async_drivers.aiohttp --hidden-import engineio.async_aiohttp PhasmoCompanion.py
+    cmd = f"pyinstaller --onefile --windowed --name=PhasmoCompanion --icon={version['ico']} --hidden-import engineio.async_drivers.aiohttp --hidden-import engineio.async_aiohttp PhasmoCompanion.py"
     print(cmd)
     
 proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
