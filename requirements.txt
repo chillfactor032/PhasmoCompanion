@@ -2,6 +2,6 @@ PySide6
 requests
 imageio
 keyboard
-qt-material
-psutil
+aiohttp
+python-socketio
 pyinstaller

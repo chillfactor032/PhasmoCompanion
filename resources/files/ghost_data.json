@@ -1,0 +1,327 @@
+{
+    "version": 0,
+	"evidence": [
+		"EMF5",
+		"Spirit_Box",
+		"Fingerprints",
+		"Ghost_Orb",
+		"Ghost_Writing",
+		"Freezing_Temps",
+		"DOTS"
+	],
+    "ghost_data": [
+        {
+            "name": "Spirit",
+            "evidence": [
+                "EMF5",
+                "Spirit_Box",
+                "Ghost_Writing"
+            ],
+            "data": {
+                "strength": "None.",
+                "weakness": "Smudge sticks are more effective, preventing a hunt for longer.",
+                "notes": "Smudge sticks are effective for 180 seconds instead of 90."
+            }
+        },
+        {
+            "name": "Wraith",
+            "evidence": [
+                "EMF5",
+                "Spirit_Box",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Cannot be tracked by footsteps.",
+                "weakness": "Will never step in salt.",
+                "notes": "Can teleport within 3m of a player and give EMF 2 there. Placing salt in the center of the Summoning Circle and then summoning the ghost is a good way to spot a Wraith."
+            }
+        },
+        {
+            "name": "Phantom",
+            "evidence": [
+                "Spirit_Box",
+                "Fingerprints",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Looking at a Phantom will lower the player's sanity considerably.",
+                "weakness": "Taking a photo of the Phantom will cause it to briefly disappear.",
+                "notes": "Flashes visible every 1 to 2 seconds during a hunt opposed to every 0.3 to 1 second for other ghosts. Stays invisible longer."
+            }
+        },
+        {
+            "name": "Poltergeist",
+            "evidence": [
+                "Spirit_Box",
+                "Fingerprints",
+                "Ghost_Writing"
+            ],
+            "data": {
+                "strength": "Capable of throwing multiple objects at once.",
+                "weakness": "Becomes powerless with no throwables nearby.",
+                "notes": "Will always throw an item every 0.5 seconds during a hunt instead of the 50% chance to do so. <br> <br>Has the ability to throw multiple items at once, creating an EMF 2, and will decrease the sanity of all players who are in the line of sight of the EMF 2 location. "
+            }
+        },
+        {
+            "name": "Banshee",
+            "evidence": [
+                "Fingerprints",
+                "Ghost_Orb",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Will target only one player at a time.",
+                "weakness": "Distinct wail over the parabolic microphone.",
+                "notes": "Crucifix effectiveness is increased to 5m from 3m. <br><br> Hunts based on its target's sanity instead of average sanity, but the hunt rage is still 50%. Will ignore all other players during a hunt except for its target if they are inside the house. <br><br> Can only complete the Repel Objective if it is chasing its target when lighting the smudge stick. Still reacts to smudge sticks normally. "
+            }
+        },
+        {
+            "name": "Jinn",
+            "evidence": [
+                "EMF5",
+                "Fingerprints",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Travels at faster speeds if its victim is far away. ",
+                "weakness": "Cannot use its ability if the site's fuse box is off.",
+                "notes": "Ability to lower the sanity of all players in the room or within 2 meters by 25%. Generating an EMF 2\/5 reading at the fuse box.<br><br> Pursues players at a slightly slower speed (2.5 m\/s) when it has a line of sight on the players until it is within 3 meters of the player, then it will pursue them at standard ghost speed. "
+            }
+        },
+        {
+            "name": "Mare",
+            "evidence": [
+                "Spirit_Box",
+                "Ghost_Orb",
+                "Ghost_Writing"
+            ],
+            "data": {
+                "strength": "Has an increased chance to attack in the dark. ",
+                "weakness": "Turning the lights on will reduce the chance of an attack.",
+                "notes": "Modified hunt threshold depending on if it is in a room that is lit or not: 60% average sanity if the lights are turned off. 40% average sanity if the lights are turned on. Does not apply to other sources of light such as equipment brought in, including candles. <br><br> More likely to choose an unlit room than a lit room to room in and cannot turn on the lights. <br><br> Cannot turn on a room light, but can turn on the breaker."
+            }
+        },
+        {
+            "name": "Revenant",
+            "evidence": [
+                "Ghost_Orb",
+                "Ghost_Writing",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Can travel significantly faster if a player is spotted during a hunt.",
+                "weakness": "Moves very slowly when not chasing a player.",
+                "notes": "Cannot run from it for long. Critical to hide from it as soon as possible and not give away your location. If found running from it, your last resort is to use a Smudge Stick to give you a couple of seconds to hide from it. <br><br> Starts the hunt off at 1 m\/s roaming speed until it detects a player. Then it moves at twice (3 m\/s) the base speed of a ghost once it detects a player visually, through speech, or electronics until it reaches the last spot it detected a player. Then it decreases its speed over 2.7 seconds back to its roaming speed of 1 m\/s."
+            }
+        },
+        {
+            "name": "Shade",
+            "evidence": [
+                "EMF5",
+                "Ghost_Writing",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Being shy makes it more difficult to locate and obtain evidence.",
+                "weakness": "Less likely to hunt if multiple people are nearby.",
+                "notes": "Hunts below average sanity of 35%. Unable to perform interactions that case EMF 3 or initiate a hunt if at least one person is in the same room as it. If it wanders into a room without players, it can perform these actions. "
+            }
+        },
+        {
+            "name": "Demon",
+            "evidence": [
+                "Fingerprints",
+                "Ghost_Writing",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Will initiate hunts more often. ",
+                "weakness": "Fear the Crucifix and will be less aggressive near one. ",
+                "notes": "The hunting threshold is 70%. Aggressive in its hunting, with 20 seconds between hunts instead of 25. Smudging a demon will prevent hunts for 60 seconds instead of 90 seconds. <br><br> Crucifix effectiveness is increased to 5m from 3m. "
+            }
+        },
+        {
+            "name": "Yurei",
+            "evidence": [
+                "Ghost_Orb",
+                "Freezing_Temps",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Has a stronger effect on sanity. ",
+                "weakness": "Smudging the Yurei's ghost room will reduce how often it wanders.",
+                "notes": "When smudged it will not leave the room it is currently in for 90 seconds, will not hunt, and will temporarily increase activity. Ability to drain sanity by 15% for all players who are within 7.5 meters of the ghost. <br><br> If the ghost fully shuts the front\/exit door without a ghost event or a hunt it is  Yurei."
+            }
+        },
+        {
+            "name": "Oni",
+            "evidence": [
+                "EMF5",
+                "Freezing_Temps",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Increased activity when people are nearby and will drain sanity faster when manifesting.",
+                "weakness": "An Oni's increased activity makes them easier to find.\r\n<br>During a hunt, an Oni flashes visible for longer.",
+                "notes": "Cannot do the &quot;ghost mist&quot; event, but can still perform events that cause a hiss. Will have double the sanity drain (20%) when colliding with the target player in a &quot;fake hunt&quot; ghost event. "
+            }
+        },
+        {
+            "name": "Hantu",
+            "evidence": [
+                "Fingerprints",
+                "Ghost_Orb",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Lower temperatures allow the Hantu to move faster. ",
+                "weakness": "Warmer areas slow the Hantu's movement.",
+                "notes": "When the breaker is off, the Hantu will emit freezing breath during a hunt. Dead players cannot see this. <br><br> Cannot turn on the fuse box and is twice as likely to turn it off."
+            }
+        },
+        {
+            "name": "Yokai",
+            "evidence": [
+                "Spirit_Box",
+                "Ghost_Orb",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Talking near the Yokai will anger it, increasing the chance to attack. ",
+                "weakness": "Can only hear voices\/electronics close (2.5 meters) to it during a hunt.",
+                "notes": "When at least one player talks, or produces significant noise, near a Yokai its hunt range jumps to 80% temporarily. Otherwise, it sticks to the normal threshold of 50%. "
+            }
+        },
+        {
+            "name": "Goryo",
+            "evidence": [
+                "EMF5",
+                "Fingerprints",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Can only be seen interacting with D.O.T.S. through a camera when nobody is nearby.",
+                "weakness": "Tends to wander away less from its ghost room.",
+                "notes": "Cannot change favourite rooms. Can only roam 5 meters away instead of the usual 10 meters. "
+            }
+        },
+        {
+            "name": "Myling",
+            "evidence": [
+                "EMF5",
+                "Fingerprints",
+                "Ghost_Writing"
+            ],
+            "data": {
+                "strength": "Has quieter footsteps during a hunt.",
+                "weakness": "Produces paranormal sounds more frequently.",
+                "notes": "During a hunt, its footsteps and vocalizations sounds will only be heard by players within 12 meters instead of the usual 20 meters. Footsteps will be slightly muffled near the limit but will become discernible as it approaches. "
+            }
+        },
+        {
+            "name": "Onryo",
+            "evidence": [
+                "Spirit_Box",
+                "Ghost_Orb",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "A flame extinguishing can cause an Onryo to attack.",
+                "weakness": "The presence of flames reduces the Onryo's ability to attack.",
+                "notes": "The Hunt threshold is 60% and has a chance to hunt at any sanity after blowing out a candle. An Onryo will always blow out a candle before activating a crucifix in the same range. <br><br>Will blow out flames more often than other ghosts and the frequency increases with the number of dead players.<br><br> Lighter flames are now being considered towards the hunt ability when they are blown out.  "
+            }
+        },
+        {
+            "name": "The Twins",
+            "evidence": [
+                "EMF5",
+                "Spirit_Box",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Either Twin may start a hunt, though not at the same time.",
+                "weakness": "Will often interact with the environment at the same time.",
+                "notes": "Each Twin will have a subtly different hunt speed. Mechanically, The Twins is simply one ghost and follows the 25 seconds between hunts.<br><br>\r\nWhen it uses its ability it will do one interaction in the normal radius (up to 3 meters) and one within a larger radius (up to 16 meters). All interactions follow the 25% chance of generating an EMF 5. "
+            }
+        },
+        {
+            "name": "Raiju",
+            "evidence": [
+                "EMF5",
+                "Ghost_Orb",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Moves faster (2.5 m\/s) near electrical devices. ",
+                "weakness": "Disrupts electronic equipment from further away (15 m) when it hunts or during an event.",
+                "notes": "The Hunt threshold is increased to 65% when at least one piece of active electronics is nearby, otherwise, it is 50%. Gains a speed bonus from extended chases. <br><br>\r\n\r\nFollowing do not count towards the speed boost or sanity threshold:\r\n<ul>\r\n<li>Head-mounted cameras<\/li>\r\n<li>Video and photo cameras that are thrown on the ground<\/li>\r\n<li>Motion and sound sensors, and D.O.T.S. thrown on the ground or held<\/li>\r\n<li>Objects in inventory (Except for flashlights that are turned on)<\/li>\r\n<li>Any electrical equipment not brought in from the van ex. Lights, fuse box, fans, CCTV, etc.<\/li>\r\n<\/ul>"
+            }
+        },
+        {
+            "name": "Obake",
+            "evidence": [
+                "EMF5",
+                "Fingerprints",
+                "Ghost_Orb"
+            ],
+            "data": {
+                "strength": "May leave fingerprints that disappear quicker. ",
+                "weakness": "Has a small chance of leaving six-fingered handprints.\r\n<br>During a hunt, an Obake will always change models during at least one flicker. Dead players cannot see this change. ",
+                "notes": "Has a 75% chance of leaving fingerprints on valid surfaces instead of the usual 100%. <br><br>\r\nUnique handprint\/fingerprint patterns:\r\n<ul>\r\n<li>Six-fingered handprint instead of five fingers<\/li>\r\n<li>Two fingerprints on a lightswitch instead of one<\/li>\r\n<li>Five finger printed on keyboard and Prision cell doors instead of 4<\/li>\r\n<\/ul>"
+            }
+        },
+        {
+            "name": "The Mimic",
+            "evidence": [
+                "Spirit_Box",
+                "Fingerprints",
+                "Ghost_Orb",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Can mimic the abilities, traits, and hunt thresholds of other ghosts.",
+                "weakness": "Will present Ghost Orbs as a secondary evidence.",
+                "notes": "The mimic will change the ghost type it mimics every 30 seconds to two minutes but will not change during a hunt. It can mimic the player or The Mimic itself and in these cases, it will not have any special abilities and will act as the &quot;default&quot; ghost. "
+            }
+        },
+        {
+            "name": "Moroi",
+            "evidence": [
+                "Spirit_Box",
+                "Ghost_Writing",
+                "Freezing_Temps"
+            ],
+            "data": {
+                "strength": "Moves noticeably faster at low player sanity.",
+                "weakness": "Smudge sticks blind the ghost for longer during hunts (12 seconds).",
+                "notes": "Can curse a target in two ways:\r\n<ul>\r\n<li> Successful response from the spirit box<\/li>\r\n<li> Hearing whispers through the parabolic microphone<\/li>\r\n<\/ul>\r\n\r\nWhen a player is cursed their passive sanity drain is doubled and being in a lit area will not prevent this. Curse will pause when the player leaves the investigation area until they re-enter. Taking Sanity Pills is the only way to remove the curse. Can be re-cursed later and multiple players can be cursed at the same time. Curses cannot stack on one player. <br><br> \r\n\r\nIf average sanity is below 5% Moroi moves faster (3.71 m\/s) than the Revenant (3 m\/s). \r\n\r\n"
+            }
+        },
+        {
+            "name": "Deogen",
+            "evidence": [
+                "Spirit_Box",
+                "Ghost_Writing",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Senses the living, run but can't hide. ",
+                "weakness": "Require a lot of energy to form, making them slow.",
+                "notes": "The Hunt threshold is 40%. During a hunt will pick the closest player and move towards it and will occasionally refresh and re-pick the nearest target. Fast until it catches up with you. Flashes are invisible for shorter than the standard range.  <br><br> Has a 33% chance to produce a unique response on the Spirit Box of constant heavy bull-like breathing. "
+            }
+        },
+        {
+            "name": "Thaye",
+            "evidence": [
+                "Ghost_Orb",
+                "Ghost_Writing",
+                "DOTS"
+            ],
+            "data": {
+                "strength": "Upon entering the location, it will become active, defensive, and agile",
+                "weakness": "Weaken over time, making them weaker slower and less agressive.",
+                "notes": "Every one to two minutes it attempts to age, if at least one player is in the same room as the ghost it will age. If not, it will wait another 30 seconds before trying to age up again. Thaye can age a total of ten times per contract.  <br><br>The only ghost that can change its age when asked on the Ouija board.  <br><br> <table>\r\n    <tr>\r\n        <th>Behaviour<\/th>\r\n        <th> Intital Condition<\/th>\r\n        <th>Age Modifier<\/th>\r\n    <th>Final Condition<\/th>\r\n    <\/th>\r\n    <tr>\r\n        <td>Hunt Sanity Threshold<\/td>\r\n        <td>75%<\/td>\r\n        <td>-6%<\/td>\r\n        <td>15%<\/td>\r\n    <\/tr>\r\n    <tr>\r\n        <td>Hunt Speed<\/td>\r\n        <td>2.75 m\/s<\/td>\r\n        <td>-0.175 m\/s<\/td>\r\n        <td>1 m\/s<\/td>\r\n    <\/tr>\r\n    <tr>\r\n        <td>Relative Interaction\/Event Rate<\/td>\r\n        <td>200%<\/td>\r\n        <td>-15%<\/td>\r\n        <td>50%<\/td>\r\n    <\/tr>\r\n<\/table>"
+            }
+        }
+    ]
+}
