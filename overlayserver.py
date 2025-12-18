@@ -60,7 +60,7 @@ class OverlayServer(Thread):
         self.runner = web.AppRunner(self.app)
         self.stop_event = asyncio.Event()
         self.sio.attach(self.app)
-        self.app.router.add_static("/static", self.base_dir)
+        self.app.router.add_static("/", self.base_dir)
         self.app.router.add_get('/', self.index)
         self.clients = []
         self.event_queue = queue.Queue()
@@ -95,15 +95,14 @@ class OverlayServer(Thread):
             await self.sio.disconnect(client)
         self.clients = []
 
-    def send_event(self, event, msg):
-        self.event_queue.put((event,{"data": msg}))
+    def send_event(self, event, data):
+        #self.event_queue.put((event,{"data": data}))
+        self.event_queue.put((event,data))
 
     async def start_server(self):
         await self.runner.setup()
         site = web.TCPSite(self.runner, host=self.host, port=self.port)
-        print("Starting server")
         await site.start()
-        print("Server started")
 
     async def wait_for_shutdown(self):
         await self.stop_event.wait()

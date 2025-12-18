@@ -163,7 +163,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(824, 549)
+        MainWindow.resize(824, 512)
         MainWindow.setStyleSheet(u"/*\n"
 "Dark: #16191d\n"
 "Accent_1: #1f2322\n"
@@ -268,7 +268,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.groupBox_4 = QGroupBox(self.widget_6)
         self.groupBox_4.setObjectName(u"groupBox_4")
+        self.groupBox_4.setMinimumSize(QSize(0, 350))
         self.verticalLayout_4 = QVBoxLayout(self.groupBox_4)
+        self.verticalLayout_4.setSpacing(6)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.widget_5 = QWidget(self.groupBox_4)
         self.widget_5.setObjectName(u"widget_5")
@@ -436,9 +438,33 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.widget_10)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.widget_11 = QWidget(self.groupBox_4)
+        self.widget_11.setObjectName(u"widget_11")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.widget_11.sizePolicy().hasHeightForWidth())
+        self.widget_11.setSizePolicy(sizePolicy1)
+        self.widget_11.setMinimumSize(QSize(3, 0))
+        self.widget_11.setMaximumSize(QSize(16777215, 25))
+        self.horizontalLayout_11 = QHBoxLayout(self.widget_11)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalSpacer_2 = QSpacerItem(135, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.verticalLayout_4.addItem(self.verticalSpacer)
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_2)
+
+        self.result_ruled_out_button = QPushButton(self.widget_11)
+        self.result_ruled_out_button.setObjectName(u"result_ruled_out_button")
+
+        self.horizontalLayout_11.addWidget(self.result_ruled_out_button)
+
+        self.horizontalSpacer_3 = QSpacerItem(134, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_3)
+
+
+        self.verticalLayout_4.addWidget(self.widget_11)
 
 
         self.verticalLayout_3.addWidget(self.groupBox_4)
@@ -462,11 +488,11 @@ class Ui_MainWindow(object):
 
         self.widget_4 = QWidget(self.centralwidget)
         self.widget_4.setObjectName(u"widget_4")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
-        self.widget_4.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.widget_4.sizePolicy().hasHeightForWidth())
+        self.widget_4.setSizePolicy(sizePolicy2)
         self.widget_4.setMinimumSize(QSize(400, 0))
         self.widget_4.setMaximumSize(QSize(800, 16777215))
         self.verticalLayout_2 = QVBoxLayout(self.widget_4)
@@ -633,11 +659,11 @@ class Ui_MainWindow(object):
 
         self.groupBox_3 = QGroupBox(self.widget_4)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.groupBox_3.sizePolicy().hasHeightForWidth())
-        self.groupBox_3.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.groupBox_3.sizePolicy().hasHeightForWidth())
+        self.groupBox_3.setSizePolicy(sizePolicy3)
         self.groupBox_3.setMinimumSize(QSize(0, 70))
         self.horizontalLayout_10 = QHBoxLayout(self.groupBox_3)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
@@ -651,12 +677,22 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addItem(self.horizontalSpacer)
 
+        self.help_button = QToolButton(self.groupBox_3)
+        self.help_button.setObjectName(u"help_button")
+        self.help_button.setMinimumSize(QSize(39, 40))
+        icon2 = QIcon()
+        icon2.addFile(u":/resources/img/icon/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.help_button.setIcon(icon2)
+        self.help_button.setIconSize(QSize(24, 24))
+
+        self.horizontalLayout_10.addWidget(self.help_button)
+
         self.log_button = QToolButton(self.groupBox_3)
         self.log_button.setObjectName(u"log_button")
         self.log_button.setMinimumSize(QSize(39, 40))
-        icon2 = QIcon()
-        icon2.addFile(u":/resources/img/icon/file-text.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.log_button.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u":/resources/img/icon/file-text.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.log_button.setIcon(icon3)
         self.log_button.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_10.addWidget(self.log_button)
@@ -664,9 +700,9 @@ class Ui_MainWindow(object):
         self.settings_button = QToolButton(self.groupBox_3)
         self.settings_button.setObjectName(u"settings_button")
         self.settings_button.setMinimumSize(QSize(40, 40))
-        icon3 = QIcon()
-        icon3.addFile(u":/resources/img/icon/settings.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.settings_button.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u":/resources/img/icon/settings.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.settings_button.setIcon(icon4)
         self.settings_button.setIconSize(QSize(24, 24))
 
         self.horizontalLayout_10.addWidget(self.settings_button)
@@ -702,6 +738,7 @@ class Ui_MainWindow(object):
         self.evidence_button_left_8.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.evidence_label_8.setText(QCoreApplication.translate("MainWindow", u"Dots Projector", None))
         self.evidence_button_right_8.setText(QCoreApplication.translate("MainWindow", u"...", None))
+        self.result_ruled_out_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Eliminated", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Discovered Evidence", None))
         self.evidence_button_left_1.setText(QCoreApplication.translate("MainWindow", u"...", None))
@@ -751,6 +788,10 @@ class Ui_MainWindow(object):
 
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Controls", None))
         self.reset_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
+#if QT_CONFIG(tooltip)
+        self.help_button.setToolTip(QCoreApplication.translate("MainWindow", u"Show Log", None))
+#endif // QT_CONFIG(tooltip)
+        self.help_button.setText(QCoreApplication.translate("MainWindow", u"...", None))
 #if QT_CONFIG(tooltip)
         self.log_button.setToolTip(QCoreApplication.translate("MainWindow", u"Show Log", None))
 #endif // QT_CONFIG(tooltip)
@@ -825,11 +866,11 @@ class Ui_SettingsDialog(object):
         self.groupBox.setGeometry(QRect(10, 10, 381, 201))
         self.label = QLabel(self.groupBox)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 20, 91, 21))
+        self.label.setGeometry(QRect(10, 20, 111, 21))
         self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.browser_source_url_edit = QLineEdit(self.groupBox)
         self.browser_source_url_edit.setObjectName(u"browser_source_url_edit")
-        self.browser_source_url_edit.setGeometry(QRect(130, 20, 221, 20))
+        self.browser_source_url_edit.setGeometry(QRect(130, 20, 221, 21))
         self.browser_source_url_edit.setReadOnly(True)
         self.label_2 = QLabel(self.groupBox)
         self.label_2.setObjectName(u"label_2")
@@ -847,14 +888,14 @@ class Ui_SettingsDialog(object):
         self.save_button.setGeometry(QRect(240, 160, 111, 23))
         self.open_overlay_dir_button = QPushButton(self.groupBox)
         self.open_overlay_dir_button.setObjectName(u"open_overlay_dir_button")
-        self.open_overlay_dir_button.setGeometry(QRect(130, 80, 221, 23))
+        self.open_overlay_dir_button.setGeometry(QRect(130, 100, 221, 23))
         self.label_3 = QLabel(self.groupBox)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(50, 50, 71, 20))
+        self.label_3.setGeometry(QRect(10, 50, 111, 20))
         self.label_3.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
         self.overlay_dir_edit = QLineEdit(self.groupBox)
         self.overlay_dir_edit.setObjectName(u"overlay_dir_edit")
-        self.overlay_dir_edit.setGeometry(QRect(130, 50, 221, 20))
+        self.overlay_dir_edit.setGeometry(QRect(130, 50, 221, 21))
         self.overlay_dir_edit.setReadOnly(True)
 
         self.retranslateUi(SettingsDialog)

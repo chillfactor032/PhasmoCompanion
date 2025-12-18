@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>PhasmoCompanion Suspects!</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    
+<h3 style="color: white;">Suspects:</h3>
+<div style="color: white;" id="suspects">
+
+</div>
+<script type="text/javascript" charset="utf-8">
+    var socket = io.connect();
+
+    socket.on('connect', function() {
+        
+    });
+    socket.on('disconnect', function(reason) {
+        
+    });
+    socket.on('update', function(msg) {
+        on_update(msg.data);
+    });
+
+    function on_update(data){
+        var suspect_div = document.getElementById("suspects");
+		suspect_div.innerHTML = "";
+		var ghosts = data.data.possible_ghosts;
+		var evidence = "";
+		for(var i = 0; i < ghosts.length; i++){
+			suspect_div.innerHTML += ghosts[i]["name"];
+			if(ghosts[i]["evidence"].length){
+				suspect_div.innerHTML += " (";
+				for(var x = 0; x < ghosts[i]["evidence"].length; x++){
+					if(x > 0){
+						suspect_div.innerHTML += ", ";
+					}
+					suspect_div.innerHTML += ghosts[i]["evidence"][x];
+				}
+				suspect_div.innerHTML += ")";
+			}
+			suspect_div.innerHTML += "<br>";
+		}
+    }
+</script>
+</body>
+</html>

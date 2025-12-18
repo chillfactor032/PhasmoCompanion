@@ -18,5 +18,7 @@
     <file>resources/img/icon/x.gif</file>
     <file>resources/img/icon/file-text.svg</file>
     <file>resources/img/icon/plus.svg</file>
+    <file>overlays/index.html</file>
+    <file>overlays/suspects.html</file>
 </qresource>
 </RCC>

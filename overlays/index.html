@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>PhasmoCompanion Overlay Server</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>PhasmoCompanion Overlay Server</h1>
+    Use this page as a template to create some interesting overlays. When data is changed in PhasmoCompanion, the updates are reflected here in the javascript function "on_update".
+    <h2>Status:</h2>
+    <div id="status">Disconnected</div>
+    <p>
+    <h2>Current Data:</h2>
+    <p>
+    <div><pre id="log"></pre></div>
+
+<script type="text/javascript" charset="utf-8">
+    var socket = io.connect();
+    var log = document.getElementById("log");
+    var status = document.getElementById("status");
+
+    socket.on('connect', function() {
+        var status = document.getElementById("status");
+        status.innerHTML = "Connected!"
+    });
+    socket.on('disconnect', function(reason) {
+        var status = document.getElementById("status");
+        status.innerHTML = "Disconnected: " + reason;
+    });
+    socket.on('update', function(msg) {
+        on_update(msg.data);
+    });
+
+    function on_update(data){
+        const jsonString = JSON.stringify(data, null, 2);
+        log.innerHTML = jsonString;
+    }
+</script>
+</body>
+</html>
