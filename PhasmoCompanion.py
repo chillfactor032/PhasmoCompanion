@@ -109,9 +109,9 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
             self.log(f"Created overlay file: overlays/{file}")
 
         # Setup Loading Dialog Gifs
-        loading_gif = QMovie(":resources/img/icon/loading.gif")
-        check_gif = QMovie(":resources/img/icon/check.gif")
-        x_gif = QMovie(":resources/img/icon/x.gif")
+        self.loading_gif = QMovie(":resources/img/icon/loading.gif")
+        self.check_gif = QMovie(":resources/img/icon/check.gif")
+        self.x_gif = QMovie(":resources/img/icon/x.gif")
 
         #Set window Icon
         default_icon_pixmap = QStyle.StandardPixmap.SP_FileDialogListView
@@ -166,7 +166,7 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
         self.evidence_label_3.setText(str(Evidence.NOEVIDENCE))
         self.settings_button.clicked.connect(self.show_settings)
         self.help_button.clicked.connect(self.help_button_clicked)
-        self.result_ruled_out_button.clicked.connect(self.reset_ruled_out)
+        self.reset_ruled_out_button.clicked.connect(self.reset_ruled_out_button_clicked)
 
         #Local KeyEvent Listener to Communicate with Stream Deck
         self.key_listener = KeyListener()
@@ -197,7 +197,7 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
             self.restoreState(window_state)
         self.show()
 
-        self.loading_dialog = LoadingDialog(self, loading_gif, check_gif, x_gif)
+        self.loading_dialog = LoadingDialog(self, self.loading_gif, self.check_gif, self.x_gif)
         self.loading_dialog.start("Starting Services", "Timeout...")
 
         QTimer.singleShot(2000, self.checkStart)
@@ -349,18 +349,21 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
         keylistener_started = False
         chillmessenger_started = False
         overlayserver_started = False
+        msgs = []
         #Check KeyListener and ChillMessenger Started
         while time.time() - start < 5:
             if self.key_listener and self.key_listener.started:
                 keylistener_started = True
-                self.log("KeyListener Started")
+                msgs.append("KeyListener Started")
             if self.chillmessenger and self.chillmessenger.running():
                 chillmessenger_started = True
-                self.log("ChillMessenger Server Started")
+                msgs.append("ChillMessenger Server Started")
             if self.overlay_enabled and self.overlay_server is not None:
                 overlayserver_started = True
-                self.log("OverlayServer Started")
+                msgs.append("OverlayServer Started")
             if keylistener_started and chillmessenger_started and overlayserver_started:
+                for msg in msgs:
+                    self.log(msg)
                 break
         if not keylistener_started:
             self.log("KeyEventListener did not start! (5 sec timeout)", LogLevel.ERROR)
@@ -487,7 +490,7 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
         self.selected_evidence[evidence] = Evidence(next_val)
         self.refresh_evidence_labels()
     
-    def reset_ruled_out(self, update=True):
+    def reset_ruled_out_button_clicked(self):
         self.ruled_out_evidence = [
             Evidence.NOEVIDENCE,
             Evidence.NOEVIDENCE,
@@ -496,22 +499,31 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
             Evidence.NOEVIDENCE
         ]
         self.refresh_ruled_out_evidence_labels()
-        if update:
-            self.update_possible_ghosts()
+        self.update_possible_ghosts()
 
     def reset_evidence(self):
+        # Reset Ruled Out Evidence
+        self.ruled_out_evidence = [
+            Evidence.NOEVIDENCE,
+            Evidence.NOEVIDENCE,
+            Evidence.NOEVIDENCE,
+            Evidence.NOEVIDENCE,
+            Evidence.NOEVIDENCE
+        ]
+
         #Reset Evidence
         self.selected_evidence = [
             Evidence.NOEVIDENCE,
             Evidence.NOEVIDENCE,
             Evidence.NOEVIDENCE
         ]
-        self.reset_ruled_out(False)
+        self.refresh_ruled_out_evidence_labels()
         self.refresh_evidence_labels()
         self.update_possible_ghosts()
         self.eliminated_evidence_list.clear()
 
     def closeEvent(self, evt):
+        QApplication.setOverrideCursor(Qt.WaitCursor)
         self.stop_overlay_server()
         self.chillmessenger.stop()
         self.chillmessenger.join()
@@ -523,6 +535,7 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
         else:
             self.settings.setValue("PhasmoCompanion/overlay_enabled", "0")
         self.settings.sync()
+        QApplication.setOverrideCursor(Qt.ArrowCursor)
         self.log("Closing PhasmoCompanion")
 
     def log(self, msg, level=LogLevel.INFO):
@@ -549,8 +562,8 @@ class LogDialog(QDialog):
             style = "color: #000000;"
         now = datetime.datetime.now()
         timestamp = now.strftime("%H:%M:%S")
+        print(f'{level.name} - {timestamp} - {msg}')
         msg = f'<span style="{style}">{timestamp} - {msg}</span>'
-        print(msg)
         self.ui.log_browser.append(msg)
 
 

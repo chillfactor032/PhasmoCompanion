@@ -454,10 +454,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_11.addItem(self.horizontalSpacer_2)
 
-        self.result_ruled_out_button = QPushButton(self.widget_11)
-        self.result_ruled_out_button.setObjectName(u"result_ruled_out_button")
+        self.reset_ruled_out_button = QPushButton(self.widget_11)
+        self.reset_ruled_out_button.setObjectName(u"reset_ruled_out_button")
 
-        self.horizontalLayout_11.addWidget(self.result_ruled_out_button)
+        self.horizontalLayout_11.addWidget(self.reset_ruled_out_button)
 
         self.horizontalSpacer_3 = QSpacerItem(134, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -738,7 +738,7 @@ class Ui_MainWindow(object):
         self.evidence_button_left_8.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.evidence_label_8.setText(QCoreApplication.translate("MainWindow", u"Dots Projector", None))
         self.evidence_button_right_8.setText(QCoreApplication.translate("MainWindow", u"...", None))
-        self.result_ruled_out_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
+        self.reset_ruled_out_button.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"Eliminated", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Discovered Evidence", None))
         self.evidence_button_left_1.setText(QCoreApplication.translate("MainWindow", u"...", None))

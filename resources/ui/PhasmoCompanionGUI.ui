@@ -615,7 +615,7 @@ color:  #9ea6ae;
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="result_ruled_out_button">
+              <widget class="QPushButton" name="reset_ruled_out_button">
                <property name="text">
                 <string>Reset</string>
                </property>
