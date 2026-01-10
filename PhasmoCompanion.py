@@ -78,6 +78,7 @@ class PhasmoCompanion(QMainWindow, Ui_MainWindow):
         self.version_dict = json.loads(version_file_text)
         self.app_name = self.version_dict["product_name"]
         self.version = self.version_dict["version"]
+        print(self.version)
         self.setWindowTitle(f"PhasmoCompanion {self.version}")
 
         #Load Settings
